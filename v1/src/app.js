@@ -19,8 +19,8 @@ app.use(cors());
 app.get("/deployment", (req, res) => {
     res.send("Hello deployment!");
 })
-
-app.listen(process.env.APP_PORT || 3000, () => {
+const host = process.env.DB_HOST || '0.0.0.0';
+app.listen(process.env.APP_PORT || 3000, host, () => {
     console.log("Sunucu ayağa kalktı.");
     app.use("/hosts", HostRoutes);
 });
