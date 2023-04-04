@@ -21,5 +21,6 @@ app.get("/deployment", (req, res) => {
 })
 app.listen(process.env.APP_PORT || 3000, () => {
     console.log("Sunucu ayağa kalktı.");
+    console.log("Sunucu portu: " + process.env.APP_PORT || 3000);
     app.use("/hosts", HostRoutes);
 });
