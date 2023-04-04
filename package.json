@@ -2,7 +2,10 @@
   "name": "hive",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "engines": {
+    "node": "18.15.0"
+  },
   "scripts": {
     "start": "node v1/src/app.js"
   },

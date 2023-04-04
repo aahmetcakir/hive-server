@@ -16,14 +16,13 @@ app.use(helmet());
 app.use(cors());
 
 
-app.get("/deployment", (req,res) => {
+app.get("/deployment", (req, res) => {
     res.send("Hello deployment!");
 })
 
+const port = process.env.APP_PORT || 3000;
 
-
-app.listen(process.env.APP_PORT || 8000, () => {
+app.listen(port, () => {
     console.log("Sunucu ayağa kalktı.");
     app.use("/hosts", HostRoutes);
 })
-  
