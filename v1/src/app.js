@@ -20,9 +20,7 @@ app.get("/deployment", (req, res) => {
     res.send("Hello deployment!");
 })
 
-const port = process.env.APP_PORT || 3000;
-
-app.listen(port, () => {
+app.listen(process.env.APP_PORT || 3000, () => {
     console.log("Sunucu ayağa kalktı.");
     app.use("/hosts", HostRoutes);
-})
+});
