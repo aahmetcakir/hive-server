@@ -1,1 +1,2 @@
-module.exports.HostRoutes = require("./Hosts");
+module.exports.UserRoutes = require("./Users");
+module.exports.RoomRoutes = require("./Rooms");
