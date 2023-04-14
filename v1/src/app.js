@@ -18,17 +18,9 @@ app.use(cors());
 app.use(fileUpload());
 app.use("/uploads", express.static(path.join(__dirname, "./", "uploads")));
 
-
-<<<<<<< HEAD
-app.get("/deployment", (req, res) => {
-    res.send("Hello deployment!");
+app.use('/', (req, res) => {
+    res.send("Hello World!");
 })
-app.listen(process.env.APP_PORT || 3000, () => {
-    console.log("Sunucu ayağa kalktı.");
-    console.log("Sunucu portu: " + process.env.APP_PORT || 3000);
-    app.use("/hosts", HostRoutes);
-});
-=======
 
 
 app.listen(process.env.APP_PORT || 8000, () => {
@@ -36,4 +28,3 @@ app.listen(process.env.APP_PORT || 8000, () => {
     app.use("/users", UserRoutes);
     app.use("/rooms", RoomRoutes);
 })
->>>>>>> refs/remotes/origin/main
