@@ -19,7 +19,7 @@ app.use(fileUpload());
 app.use("/uploads", express.static(path.join(__dirname, "./", "uploads")));
 
 app.use('/api', (req, res) => {
-    res.send("Hello World!");
+    res.send("Hello World");
 })
 
 
