@@ -7,7 +7,7 @@ const UserSchema = new Mongoose.Schema({
     email: { type: String, unique: true },
     password: String,
     profile_image: String,
-    rooms: [{ type: Mongoose.Schema.Types.ObjectId, ref: 'room' }], 
+    rooms: [{ type: Mongoose.Schema.Types.ObjectId, ref: 'Room' }], 
 
 }, { timestamps: true, versionKey: false });
 
@@ -18,4 +18,4 @@ UserSchema.post("save", (doc) => {
     })
 })
 
-module.exports = Mongoose.model("user", UserSchema);
+module.exports = Mongoose.model("User", UserSchema);

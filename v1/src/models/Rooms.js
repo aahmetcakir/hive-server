@@ -25,7 +25,7 @@
 
     createdBy: {
       type: Mongoose.Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'User',
     },
 
      participants: [{
@@ -34,4 +34,4 @@
      }],
  }, { timestamps: true, versionKey: false });
 
- module.exports = Mongoose.model("room", RoomSchema);
+ module.exports = Mongoose.model("Room", RoomSchema);

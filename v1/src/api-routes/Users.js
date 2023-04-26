@@ -14,7 +14,7 @@ router.route("/:id").delete(authenticate, deleteUser);
 router.route("/reset-password").post(validate(schemas.resetPasswordValidation), resetPassword);
 router.route("/change-password/:id").put(authenticate, validate(schemas.changePasswordValidation), changePassword);
 router.route("/update-profile-image").post(authenticate, updateProfileImage);
-router.route("/me").get(authenticate,getOneUser)
+router.route("/me").get(authenticate,getOneUser);
 
 
 module.exports = router;

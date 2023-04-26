@@ -37,5 +37,5 @@ module.exports = {
     modify,
     remove,
     modifyWhere,
-    getUserById
+    getUserById,
 }

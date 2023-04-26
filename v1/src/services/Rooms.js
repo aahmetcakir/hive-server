@@ -2,7 +2,7 @@ const Room = require("../models/Rooms");
 
 const insert = (data) => {
     const room = new Room(data);
-    return room.save(); 
+    return room.save();
 }
 
 const list = () => {
@@ -16,7 +16,6 @@ const listIdRoom = (id) => {
 const remove = (id) => {
     return Room.findByIdAndDelete(id);
 }
-
 
 
 module.exports = {

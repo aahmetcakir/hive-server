@@ -1,12 +1,5 @@
 const Joi = require("joi");
 
-// const createValidation = Joi.object({
-//     firstName: Joi.string().required().min(3),
-//     lastName: Joi.string().required().min(3),
-//     email: Joi.string().email().required().min(8),
-//     password: Joi.string().required().min(8),
-// })
-
 const createValidation = Joi.object({
     firstName: Joi.string().trim().required().min(3).messages({
         'any.required': 'Adınızı giriniz.',
@@ -31,12 +24,6 @@ const createValidation = Joi.object({
     }),
 })
 
-// const updateValidation = Joi.object({
-//     firstName: Joi.string().min(3),
-//     lastName: Joi.string().min(3),
-//     email: Joi.string().email().min(8),
-// })
-
 const updateValidation = Joi.object({
     firstName: Joi.string().trim().min(3).messages({
         'string.min': 'İsim en az 3 karakter içermelidir.',
@@ -49,10 +36,6 @@ const updateValidation = Joi.object({
 });
 
 
-// const loginValidation = Joi.object({
-//     email: Joi.string().email().required().min(8),
-//     password: Joi.string().required().min(8),
-// });
 const loginValidation = Joi.object({
     email: Joi.string().trim().email().required().min(8).empty('').messages({
         'any.required': 'E-posta adresinizi giriniz.',
@@ -67,27 +50,17 @@ const loginValidation = Joi.object({
     }),
 });
 
-// const resetPasswordValidation = Joi.object({
-//     email: Joi.string().email().required().min(8),
-
-// });
-
 const resetPasswordValidation = Joi.object({
     email: Joi.string().trim().email().required().min(8).empty('').messages({
         'any.required': 'E-posta adresinizi giriniz.',
         'string.email': 'Lütfen geçerli bir e-posta adresi giriniz.',
         'string.min': 'E-posta adresiniz en az 8 karakter içermelidir.',
         'string.empty': 'Email alanı boş geçilemez',
-        
+
     }),
 
 });
 
-// const changePasswordValidation = Joi.object({
-//     newpassword: Joi.string().required().min(8),
-//     oldpassword: Joi.string().required().min(8),
-
-// });
 
 const changePasswordValidation = Joi.object({
     newpassword: Joi.string().required().min(8).empty('').messages({
