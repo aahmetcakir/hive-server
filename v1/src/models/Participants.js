@@ -8,7 +8,11 @@
          room: {
            type: Mongoose.Schema.Types.ObjectId,
            ref: "Rooms"
-         }
+         },
+         ip: {
+          type: String,
+          required: true
+        },
        }, { timestamps: true, versionKey: false });
 
    module.exports = Mongoose.model("participant", ParticipantSchema);

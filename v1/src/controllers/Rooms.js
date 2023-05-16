@@ -225,6 +225,27 @@ const deleteRoom = (req, res) => {
         });
 };
 
+// const JoinRoom = async (req, res) => {
+
+//     const code = req.params.code;
+
+//     const room = await Rooms.findOne({ code });
+
+//     if (!room) {
+//         return res.status(httpStatus.NOT_FOUND).send({ message: 'Geçersiz kod' });
+//     }
+//     const participant = new Participant({ room: room.id });
+//     await participant.save();
+
+//     let participants = room.participants || [];
+//     participants.push(participant.name);
+//     room.participants = participants;
+
+//     await room.save();
+
+//     return res.status(httpStatus.OK).send({ message: 'Katılım başarılı.', participant });
+// };
+
 const JoinRoom = async (req, res) => {
 
     const code = req.params.code;
@@ -234,7 +255,15 @@ const JoinRoom = async (req, res) => {
     if (!room) {
         return res.status(httpStatus.NOT_FOUND).send({ message: 'Geçersiz kod' });
     }
-    const participant = new Participant({ room: room.id });
+
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const existingParticipant = await Participant.findOne({ room: room.id, ip: clientIp });
+
+    if (existingParticipant) {
+        return res.status(httpStatus.BAD_REQUEST).send({ message: 'Aynı etkinliğe tekrardan katılamazsınız.', participant: existingParticipant });
+    }
+
+    const participant = new Participant({ room: room.id, ip: clientIp });
     await participant.save();
 
     let participants = room.participants || [];
